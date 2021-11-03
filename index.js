@@ -12,7 +12,7 @@ const Wallet = require('./wallet')
 const TransactionMiner = require('./app/transaction-miner')
 
 // dev flag
-const isDevelopment = (process.env.ENV = 'development')
+const isDevelopment = process.env.ENV = 'development'
 
 // // port settings
 const REDIS_URL = isDevelopment ? 'redis://127.0.0.1:6379' : 'redis://:pbd997b0657a3c84f5965d89f4f12afcb4966866d25317e6e9407be0776650755@ec2-23-20-220-53.compute-1.amazonaws.com:13049'
