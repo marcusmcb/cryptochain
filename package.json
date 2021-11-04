@@ -8,7 +8,6 @@
     "start": "npm run build-client & node index.js",
     "dev": "start npm run dev-client && cross-env ENV='development' nodemon index.js",
     "dev-peer": "cross-env GENERATE_PEER_PORT='true' ENV='development' nodemon index.js",
-    
     "build-client": "npm run clean && parcel build client/src/index.html --out-dir client/dist",
     "dev-client": "npm run clean && parcel client/src/index.html --out-dir client/dist",
     "clean": "rm -rf .cache client/dist"
@@ -42,7 +41,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
-    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-react": "^7.16.0",
     "cross-env": "^5.2.0",
     "nodemon": "^1.18.4"
   },
