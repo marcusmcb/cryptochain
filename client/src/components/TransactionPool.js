@@ -6,6 +6,11 @@ import history from '../history'
 
 const POLL_INTERVAL_MS = 10000
 
+// user can currently receive a mining reward by mining an empty transaction pool
+// add logic to display mine transaction button *only* when there are available blocks to mine
+// add "isEmpty" logic to check the return from fetchTransactionPoolMap()
+// if empty, button should not appear - behaves properly on first load but reappears after the setInterval
+
 class TransactionPool extends Component {
   state = { transactionPoolMap: {} }
 

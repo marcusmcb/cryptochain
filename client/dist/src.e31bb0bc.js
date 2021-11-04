@@ -52521,10 +52521,18 @@ var Blocks = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      // sort blocks by most recently added
+      //
+      // this.state.blocks.sort((a, b) => {
+      //   var c = new Date(a.timestamp)
+      //   var d = new Date(b.timestamp)
+      //   return d-c
+      // })
       console.log('this.state', this.state);
       return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, "Home")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("h3", null, "Blocks"), this.state.blocks.map(function (block) {
+        console.log(block.timestamp);
         return /*#__PURE__*/_react.default.createElement(_Block.default, {
           key: block.hash,
           block: block
@@ -52705,7 +52713,10 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var POLL_INTERVAL_MS = 10000;
+var POLL_INTERVAL_MS = 10000; // user can currently receive a mining reward by mining an empty transaction pool
+// add logic to display mine transaction button *only* when there are available blocks to mine
+// add "isEmpty" logic to check the return from fetchTransactionPoolMap()
+// if empty, button should not appear - behaves properly on first load but reappears after the setInterval
 
 var TransactionPool = /*#__PURE__*/function (_Component) {
   _inherits(TransactionPool, _Component);
@@ -52923,7 +52934,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53848" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61291" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

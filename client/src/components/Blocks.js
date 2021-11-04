@@ -8,11 +8,19 @@ class Blocks extends Component {
   componentDidMount() {
     fetch(`${document.location.origin}/api/blocks`)
       .then((response) => response.json())
-      .then((json) => this.setState({ blocks: json }))
-  }
+      
+      .then((json) => this.setState({ blocks: json }))          
+  }  
 
   render() {
-    console.log('this.state', this.state)
+    // sort blocks by most recently added
+    //
+    // this.state.blocks.sort((a, b) => {
+    //   var c = new Date(a.timestamp)
+    //   var d = new Date(b.timestamp)
+    //   return d-c
+    // })
+    console.log('this.state', this.state)    
     return (
       <div>
         <div>
@@ -20,7 +28,9 @@ class Blocks extends Component {
         </div>
         <br />
         <h3>Blocks</h3>
-        {this.state.blocks.map((block) => {
+        {          
+          this.state.blocks.map((block) => {
+          console.log(block.timestamp)
           return (
           <Block key={block.hash} block={block}/>
           )
