@@ -23,10 +23,13 @@ body {
   width: 500px;
 }
 
-.Block {
+.Block, .ConductTransaction, .TransactionPool {
   border: 1px solid white;
   padding: 5%;
-  margin: 2%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60vw;
 }
 
 .Transaction {
@@ -38,7 +41,7 @@ a, a:hover {
   text-decoration: underline;
 }
 
-.ConductTransaction, .TransactionPool {
+/* .ConductTransaction, .TransactionPool {
   margin: 10%;
-
-}
+  
+} */
