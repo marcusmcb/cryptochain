@@ -10,6 +10,7 @@ const PubSub = require('./app/pubsub')
 const TransactionPool = require('./wallet/transaction-pool')
 const Wallet = require('./wallet')
 const TransactionMiner = require('./app/transaction-miner')
+const { resolveNaptr } = require('dns')
 
 // dev flag
 const isDevelopment = process.env.ENV === 'development'
@@ -118,6 +119,17 @@ app.get('/api/wallet-info', (req, res) => {
   })
 })
 
+app.get('/api/known-addresses', (req, res) => {
+  const addressMap = {}
+  for (let block of blockchain.chain) {
+    for (let transaction of block.data) {
+      const recipient = Object.keys(transaction.outputMap)
+      recipient.forEach(recipient => addressMap[recipient] = recipient)
+    }
+  }
+  res.json(Object.keys(addressMap))
+})
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/dist/index.html'))
 })
@@ -185,3 +197,8 @@ app.listen(PORT, () => {
     syncWithRootState()
   }
 })
+
+// add cloud db backup to chain
+// add boilerplate to keep heroku app from sleeping (if possible)
+// change mine reward to appear only when unmined transactions are present
+

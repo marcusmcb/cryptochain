@@ -12,14 +12,7 @@ class Blocks extends Component {
       .then((json) => this.setState({ blocks: json }))          
   }  
 
-  render() {
-    // sort blocks by most recently added
-    //
-    // this.state.blocks.sort((a, b) => {
-    //   var c = new Date(a.timestamp)
-    //   var d = new Date(b.timestamp)
-    //   return d-c
-    // })
+  render() {    
     console.log('this.state', this.state)    
     return (
       <div>
